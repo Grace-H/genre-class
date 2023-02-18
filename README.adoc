@@ -1,0 +1,6 @@
+= genre-class
+
+Classify music by genre
+
+== Dataset
+Dataset from https://www.kaggle.com/datasets/purumalgi/music-genre-classification[Kaggle]
