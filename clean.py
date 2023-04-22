@@ -6,21 +6,28 @@ import pandas as pd
 import numpy as np
 
 # Create dataframe
-df = pd.read_csv('train.csv')
+df = pd.read_csv('uncleaned_data.csv')
 
-# Drop columns
+# Drop columns & rows with NaNs
 to_drop = ['key',
            'instrumentalness']
 df.drop(to_drop, inplace=True, axis=1)
+df = df.dropna(axis='index')
 
 # Grab rows with correct genres
-five = df.loc[df["Class"] == 5]
-six = df.loc[df["Class"] == 6]
-eight = df.loc[df["Class"] == 8]
-nine = df.loc[df["Class"] == 9]
-ten = df.loc[df["Class"] == 10]
+acoustic_folk = df.loc[df["Class"] == 0] # Acoustic/Folk
+alt = df.loc[df["Class"] == 1]
+blues = df.loc[df["Class"] == 2]
+bollywood = df.loc[df["Class"] == 3]
+country = df.loc[df["Class"] == 4]
+hiphop = df.loc[df["Class"] == 5]
+indie_alt = df.loc[df["Class"] == 6]
+instrumental = df.loc[df["Class"] == 7]
+metal = df.loc[df["Class"] == 8]
+pop = df.loc[df["Class"] == 9]
+rock = df.loc[df["Class"] == 10]
 
-dfs = [five, six, eight, nine, ten]
+dfs = [blues, hiphop, metal]
 df = pd.concat(dfs)
 
 # Drop rows with duplicate songs
